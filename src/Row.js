@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "./axios";
-import "../styles/Row.css";
+import "./Row.css";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
@@ -9,7 +9,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
 
   useEffect(() => {
     // if [], run once when the row loads and don't run again.
-    // if [variable], run once then every time variable changes. Or if variable changes useEffect runs.
+    // if [variable] run once then every time variable changes. Or if variable changes useEffect runs.
 
     async function fetchData() {
       const request = await axios.get(fetchUrl);
@@ -26,9 +26,10 @@ function Row({ title, fetchUrl, isLargeRow }) {
         {movies.map((movie) => (
           <img
             key={movie.id}
-            className={`row__poster ${isLargeRow && 'row__posterLarge'}`}
+            className={`row__poster ${isLargeRow && "row__posterLarge"}`}
             src={`${base_url}${
-                isLargeRow ? movie.poster_path : movie.backdrop_path}`}
+              isLargeRow ? movie.poster_path : movie.backdrop_path
+            }`}
             alt={movie.name}
           />
         ))}
